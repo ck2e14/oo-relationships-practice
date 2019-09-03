@@ -2,7 +2,7 @@ class Listing
 #A listing has many trips
 #Has many guests through trips
 
-attr_accessor :city, :trip, :guest
+attr_accessor :city, :trip, :guest, :name
 attr_reader 
 
 @@all = []
@@ -48,5 +48,6 @@ def self.most_popular
 end
 #iterates over @@all array and finds the max_by value for the previously used trip_count method, which returns the number of trips at a speicifc listing
 #becuse this method uses an enumerator, it will apply trip_count to each listing. 
+
 
 end
