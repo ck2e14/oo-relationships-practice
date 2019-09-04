@@ -28,18 +28,26 @@ class User
     def count_pledge
         Pledge.all.count {|pledge| pledge.user == self}
     end
+    # calls .count on every pledge in the array that has a .user association to self, i.e. the instance
+    # that the method is called on. 
 
     def self.multi_pledger
         @@all.select {|user|user.count_pledge > 1}
     end
+    # this method selects all users who have a count_pledge greater than one, i.e. it invokes the earlier defined
+    # count_pledge method, which returns all pledges that have a user association. So what this method does is to
+    # iterate over all users, (@@all) and 
 
     def projects
         Project.all.select {|proj| proj.user == self}
     end
+    #this method is returning all projects that were created by the user the method is called on
 
     def self.project_creator
         @@all.select {|user| user.projects.length > 0}
     end
+    #invokes projects method - it calls it on all users in @@all array - and returns users who have more than 0 project creations. 
+    #this one iterates over the User class's @@all array and returns a new array with the users 
 
 
 end
